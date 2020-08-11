@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectroscopy_sensor", "Spectroscopy_sensor\Spectroscopy_sensor.csproj", "{0116520A-7D66-4FAE-925D-5BF0297BB10B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0116520A-7D66-4FAE-925D-5BF0297BB10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0116520A-7D66-4FAE-925D-5BF0297BB10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0116520A-7D66-4FAE-925D-5BF0297BB10B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0116520A-7D66-4FAE-925D-5BF0297BB10B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4E0C253-D9F0-4CF1-8CE2-CA94B6A5F004}
+	EndGlobalSection
+EndGlobal
