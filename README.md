@@ -2,15 +2,15 @@
 Windows GUI control and data representation program for AS7265x module.
 
 ## Modules
-[ams module](https://ams.com/as7265x)
+[ams module](https://ams.com/as7265x)  
 [SparkFun module](https://www.sparkfun.com/products/15050)
 <img src="Spectroscopy_sensor/Resources/ams.png" width="30%">
 <img src="Spectroscopy_sensor/Resources/sf.png" width="30%">
 
 ## Images
-<img src="img/config_panel.png" width="30%">
-<img src="img/led_panel.png" width="30%">
-<img src="img/chart_panel.png" width="30%">
+<img src="img/config_panel.PNG" width="30%">
+<img src="img/led_panel.PNG" width="30%">
+<img src="img/chart_panel.PNG" width="30%">
 ## Build
 Build in .NET Framework 4.8
 
