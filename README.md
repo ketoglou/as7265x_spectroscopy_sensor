@@ -15,6 +15,7 @@ Windows GUI control and data representation program for AS7265x module.
 ## Information
 Module must be in UART mode with AT commands.  
 An USB to UART adapter needed (like FTDI).  
+Program can be run directly from Release folder or Build from the beginning.  
 
 ## Build
 Build in .NET Framework 4.8
