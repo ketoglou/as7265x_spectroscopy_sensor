@@ -1,4 +1,4 @@
-# Triad Spectroscopy Sensor for AS7265x module
+# Triad Spectroscopy Sensor - AS7265x module
 Windows GUI control and data representation program for AS7265x module.
 
 ## Modules
