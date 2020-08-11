@@ -12,6 +12,10 @@ Windows GUI control and data representation program for AS7265x module.
 <img src="img/led_panel.PNG" width="50%">
 <img src="img/chart_panel.PNG" width="50%">
 
+## Indormation
+Module must be in UART mode with AT commands.
+An USB to UART adapter needed (like FTDI).
+
 ## Build
 Build in .NET Framework 4.8
 
