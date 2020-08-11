@@ -1,6 +1,8 @@
 # Triad Spectroscopy Sensor for AS7265x module
-Windows gui control and data representation program for as7265x module.
+Windows GUI control and data representation program for AS7265x module.
 
+<img src="Spectroscopy_sensor/Resources/ams.png" width="30%">
+<img src="Spectroscopy_sensor/Resources/sf.png" width="30%">
 
 ## Build
 Build in .NET Framework 4.8
