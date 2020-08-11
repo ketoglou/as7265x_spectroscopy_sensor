@@ -245,45 +245,52 @@ namespace Spectroscopy_sensor
         void enable_configuration_panel(Boolean set)
         {
             if (set)
-            {
-                button1.Enabled = true;
-                button2.Enabled = true;
-                button3.Enabled = true;
-                button5.Enabled = true;
-                button6.Enabled = true;
-                button7.Enabled = true;
-                button8.Enabled = true;
-                button9.Enabled = true;
-                button10.Enabled = true;
-                button11.Enabled = true;
-                comboBox2.Enabled = true;
-                comboBox3.Enabled = true;
-                comboBox4.Enabled = true;
-                comboBox5.Enabled = true;
-                comboBox6.Enabled = true;
-                radioButton1.Enabled = true;
-                radioButton2.Enabled = true;
-                radioButton1.Select();
-                button9.Text = "Start Sampling";
-
-                string[] respond = serial_write("ATVERSW").Split(new string[] { "OK" }, StringSplitOptions.None);
-                if (respond != null)
-                    fw_version.Text = "Firmware Version : " + respond[0];
-                respond = serial_write("ATVERHW").Split(new string[] { "OK" }, StringSplitOptions.None);
-                if (respond != null)
-                    hw_version.Text = "Hardware Version : " + respond[0];
-                respond = serial_write("ATTEMP").Split(new string[] { "OK" }, StringSplitOptions.None);
-                if (respond != null)
-                    temperature_label.Text = "Device Temperature : " + respond[0];
-                respond = serial_write("ATGAIN").Split(new string[] { "OK" }, StringSplitOptions.None);
-                if (respond != null)
+            {   
+                try
                 {
-                    comboBox5.SelectedIndex = Int32.Parse(respond[0]);
-                    label6.Text = "Gain Set : " + comboBox5.SelectedItem.ToString();
-                }
-                if (serial_write("ATINTTIME=64") != "OK")
-                    serial_close();
+                    string[] respond = serial_write("ATVERSW").Split(new string[] { "OK" }, StringSplitOptions.None);
+                    if (respond != null)
+                        fw_version.Text = "Firmware Version : " + respond[0];
+                    respond = serial_write("ATVERHW").Split(new string[] { "OK" }, StringSplitOptions.None);
+                    if (respond != null)
+                        hw_version.Text = "Hardware Version : " + respond[0];
+                    respond = serial_write("ATTEMP").Split(new string[] { "OK" }, StringSplitOptions.None);
+                    if (respond != null)
+                        temperature_label.Text = "Device Temperature : " + respond[0];
+                    respond = serial_write("ATGAIN").Split(new string[] { "OK" }, StringSplitOptions.None);
+                    if (respond != null)
+                    {
+                        comboBox5.SelectedIndex = Int32.Parse(respond[0]);
+                        label6.Text = "Gain Set : " + comboBox5.SelectedItem.ToString();
+                    }
+                    if (serial_write("ATINTTIME=64") != "OK")
+                        serial_close();
 
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    button5.Enabled = true;
+                    button6.Enabled = true;
+                    button7.Enabled = true;
+                    button8.Enabled = true;
+                    button9.Enabled = true;
+                    button10.Enabled = true;
+                    button11.Enabled = true;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox4.Enabled = true;
+                    comboBox5.Enabled = true;
+                    comboBox6.Enabled = true;
+                    radioButton1.Enabled = true;
+                    radioButton2.Enabled = true;
+                    radioButton1.Select();
+                    button9.Text = "Start Sampling";
+                }
+                catch(Exception ex)
+                {
+                    serial_close();
+                }
+              
             }
             else
             {
