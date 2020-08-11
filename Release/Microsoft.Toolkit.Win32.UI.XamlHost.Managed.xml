@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Toolkit.Win32.UI.XamlHost.Managed</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Toolkit.Win32.UI.XamlHost.DesktopWindowXamlSourceExtensions">
+            <summary>
+            COM wrapper required to access native-only methods on <see cref="T:Windows.UI.Xaml.Hosting.DesktopWindowXamlSource" />
+            </summary>
+            <summary>
+            Defines assembly visibility for <seealso cref="T:Microsoft.Toolkit.Win32.UI.XamlHost.DesktopWindowXamlSourceExtensions"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Win32.UI.XamlHost.DesktopWindowXamlSourceExtensions.GetInterop``1(Windows.UI.Xaml.Hosting.DesktopWindowXamlSource)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Toolkit.Win32.UI.XamlHost.IDesktopWindowXamlSourceNative" /> interface from a <see cref="T:Windows.UI.Xaml.Hosting.DesktopWindowXamlSource" /> instance.
+            </summary>
+            <typeparam name="TInterface">The interface to cast to</typeparam>
+            <param name="desktopWindowXamlSource">The DesktopWindowXamlSource instance to get the interface from</param>
+            <returns><see cref="T:Microsoft.Toolkit.Win32.UI.XamlHost.IDesktopWindowXamlSourceNative" /> interface pointer</returns>
+            <remarks>
+            This interface is the only way to set DesktopWindowXamlSource's target window for rendering.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Toolkit.Win32.UI.XamlHost.IDesktopWindowXamlSourceNative">
+            <summary>
+            Enables access to native methods on DesktopWindowXamlSourceNative
+            </summary>
+            <remarks>
+            Includes the method used to set the window handle of the <see cref="T:Windows.UI.Xaml.Hosting.DesktopWindowXamlSource" /> instance.
+            </remarks>
+            <summary>
+            Defines assembly visibility for <seealso cref="T:Microsoft.Toolkit.Win32.UI.XamlHost.IDesktopWindowXamlSourceNative"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Win32.UI.XamlHost.IDesktopWindowXamlSourceNative.AttachToWindow(System.IntPtr)">
+            <summary>
+            Attaches the <see cref="T:Windows.UI.Xaml.Hosting.DesktopWindowXamlSource" /> to a window using a window handle.
+            </summary>
+            <param name="parentWnd">pointer to parent Wnd</param>
+            <remarks>
+            The associated window will be used to parent UWP XAML visuals, appearing
+            as UWP XAML's logical render target.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Win32.UI.XamlHost.IDesktopWindowXamlSourceNative.WindowHandle">
+            <summary>
+            Gets the handle associated with the <see cref="T:Windows.UI.Xaml.Hosting.DesktopWindowXamlSource" /> instance.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Win32.UI.XamlHost.MetadataProviderDiscovery">
+            <summary>
+            MetadataProviderDiscovery is responsible for loading all metadata providers for custom UWP XAML
+            types.  In this implementation, reflection is used at runtime to probe for metadata providers in
+            the working directory, allowing any type that includes metadata (compiled in to a .NET framework
+            assembly) to be used without explicit metadata handling by the application developer.  This
+            internal class will be amended or removed when additional type loading support is available.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Win32.UI.XamlHost.MetadataProviderDiscovery.DiscoverMetadataProviders">
+            <summary>
+            Probes working directory for all available metadata providers
+            </summary>
+            <returns>List of UWP XAML metadata providers</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Win32.UI.XamlHost.MetadataProviderDiscovery.LoadTypesFromAssembly(System.Reflection.Assembly)">
+            <summary>
+            Loads all types from the specified assembly and caches metadata providers
+            </summary>
+            <param name="assembly">Target assembly to load types from</param>
+            <returns>The set of <seealso cref="T:Windows.UI.Xaml.Markup.IXamlMetadataProvider"/> found</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Win32.UI.XamlHost.UWPTypeFactory">
+            <summary>
+            Provides factory methods for type registered with <seealso cref="T:Windows.UI.Xaml.Application"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Win32.UI.XamlHost.UWPTypeFactory.CreateXamlContentByType(System.String)">
+            <summary>
+            Creates UWP XAML type instance from WinRT type name
+            UWP XAML type name should be specified as: namespace.class
+            ex: MyClassLibrary.MyCustomType
+            ex: Windows.UI.Xaml.Shapes.Rectangle
+            ex: Windows.UI.Xaml.Controls.Button
+            </summary>
+            <param name="xamlTypeName">UWP XAML type name</param>
+            <exception cref="T:System.InvalidOperationException">Condition.</exception>
+            <returns>Instance of UWP XAML type described by xamlTypeName string</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Win32.UI.XamlHost.UWPTypeFactory.FindBuiltInType(System.String)">
+            <summary>
+            Searches for a built-in type by iterating through all types in
+            all assemblies loaded in the current AppDomain
+            </summary>
+            <param name="typeName">Full type name, with namespace, without assembly</param>
+            <returns>If found, <see cref="T:System.Type" />; otherwise, null..</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Win32.UI.XamlHost.XamlApplicationExtensions">
+            <summary>
+            XamlApplication is a custom <see cref="T:Windows.UI.Xaml.Application" /> that implements <see cref="T:Windows.UI.Xaml.Markup.IXamlMetadataProvider" />. The
+            metadata provider implemented on the application is known as the 'root metadata provider'.  This provider
+            has the responsibility of loading all other metadata for custom UWP XAML types.  In this implementation,
+            reflection is used at runtime to probe for metadata providers in the working directory, allowing any
+            type that includes metadata (compiled in to a .NET framework assembly) to be used without explicit
+            metadata handling by the developer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Win32.UI.XamlHost.XamlApplicationExtensions.GetOrCreateXamlMetadataContainer">
+            <summary>
+            Gets and returns the current UWP XAML Application instance in a reference parameter.
+            If the current XAML Application instance has not been created for the process (is null),
+            a new <see cref="T:Microsoft.Toolkit.Win32.UI.XamlHost.XamlApplication" /> instance is created and returned.
+            </summary>
+            <returns>The instance of <seealso cref="T:Microsoft.Toolkit.Win32.UI.XamlHost.XamlApplication"/></returns>
+        </member>
+    </members>
+</doc>
