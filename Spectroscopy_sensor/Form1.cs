@@ -8,6 +8,7 @@ using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
+using System.Diagnostics;
 
 namespace Spectroscopy_sensor
 {
@@ -27,6 +28,7 @@ namespace Spectroscopy_sensor
         private Mutex mut2 = new Mutex();
         private ToolTip tt = null;
         private Point tl = Point.Empty;
+        private SaveFileDialog saveFileDialog1;
 
         public Form1()
         {
@@ -41,7 +43,9 @@ namespace Spectroscopy_sensor
 
             enable_configuration_panel(false);
             comboBox5.SelectedIndex = 1;
-            
+            button12.Hide();
+            button12.Enabled = false;
+
             comboBox1.Click += ComboBox1_Click;
             // Get a list of serial port names.
             string[] ports = SerialPort.GetPortNames();
@@ -106,6 +110,13 @@ namespace Spectroscopy_sensor
             chart.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
             chart.MouseWheel += Chart_MouseWheel;
             this.splitContainer1.Panel1.Controls.Add(chart);
+
+            saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            saveFileDialog1.Title = "Save chart";
+            saveFileDialog1.DefaultExt = "png";
+            saveFileDialog1.Filter = "png files (*.png)|*.png|jpeg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|gif files (*.gif)|*.gif|tiff files (*.tiff)|*.tiff";
+            saveFileDialog1.CheckPathExists = true;
+
         }
 
         //**************************************************************************************************************************
@@ -286,7 +297,7 @@ namespace Spectroscopy_sensor
                     radioButton1.Select();
                     button9.Text = "Start Sampling";
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     serial_close();
                 }
@@ -415,6 +426,8 @@ namespace Spectroscopy_sensor
             if (sample_continue)
             {
                 button9.Text = "Stop Sampling";
+                button12.Show();
+                button12.Enabled = true;
                 if (firstTimeChart)
                 {
                     chart.MouseMove += Chart_MouseMove;
@@ -765,6 +778,34 @@ namespace Spectroscopy_sensor
             rgb[2] = Blue == 0.0 ? 0 : (int)Math.Round(IntensityMax * Math.Pow(Blue * factor, Gamma));
 
             return rgb;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.FileName = DateTime.Now.ToString("dd_MM_yyyy_hhmmss");
+            if (this.saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ChartImageFormat cif = ChartImageFormat.Png;
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        cif = ChartImageFormat.Png;
+                        break;
+                    case 2:
+                        cif = ChartImageFormat.Jpeg;
+                        break;
+                    case 3:
+                        cif = ChartImageFormat.Bmp;
+                        break;
+                    case 4:
+                        cif = ChartImageFormat.Gif;
+                        break;
+                    case 5:
+                        cif = ChartImageFormat.Tiff;
+                        break;
+                }
+                chart.SaveImage(saveFileDialog1.FileName, cif);
+            }
         }
     }
 }

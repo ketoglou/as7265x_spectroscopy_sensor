@@ -72,6 +72,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -553,6 +554,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.button12);
             this.splitContainer1.Panel2.Controls.Add(this.label11);
             this.splitContainer1.Panel2.Controls.Add(this.label10);
             this.splitContainer1.Size = new System.Drawing.Size(748, 501);
@@ -574,6 +576,16 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(0, 13);
             this.label10.TabIndex = 2;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(3, 80);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(173, 23);
+            this.button12.TabIndex = 4;
+            this.button12.Text = "Snapshot";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // Form1
             // 
@@ -649,6 +661,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button12;
     }
 }
 
