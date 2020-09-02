@@ -111,7 +111,7 @@ namespace Spectroscopy_sensor
             chart.MouseWheel += Chart_MouseWheel;
             this.splitContainer1.Panel1.Controls.Add(chart);
 
-            saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Title = "Save chart";
             saveFileDialog1.DefaultExt = "png";
             saveFileDialog1.Filter = "png files (*.png)|*.png|jpeg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|gif files (*.gif)|*.gif|tiff files (*.tiff)|*.tiff";
@@ -294,7 +294,7 @@ namespace Spectroscopy_sensor
                     comboBox6.Enabled = true;
                     radioButton1.Enabled = true;
                     radioButton2.Enabled = true;
-                    radioButton1.Select();
+                    radioButton2.Select();
                     button9.Text = "Start Sampling";
                 }
                 catch(Exception)
@@ -523,7 +523,7 @@ namespace Spectroscopy_sensor
                                 series1.Points.AddXY(data_xy[i][0], data_xy[i][1]);
                                 rgb = waveLengthToRGB(data_xy[i][0]);
                                 series1.Points[i].Color = Color.FromArgb(rgb[0], rgb[1], rgb[2]);
-                                series1.Points[i].Label = (data_xy[i][0]).ToString();
+                                series1.Points[i].Label = (data_xy[i][0] + "|" + data_xy[i][1]).ToString();
                             }
                             else
                             {
@@ -533,7 +533,7 @@ namespace Spectroscopy_sensor
                                     flag_join = false;
                                 }
                                 series2.Points.AddXY(data_xy[i][0], data_xy[i][1]);
-                                series2.Points[i - 12].Label = (data_xy[i][0]).ToString();
+                                series2.Points[i - 12].Label = (data_xy[i][0] + "|" + data_xy[i][1]).ToString();
                             }
 
                         }
@@ -573,7 +573,7 @@ namespace Spectroscopy_sensor
                                 series1.Points.AddXY(data_xy[i][0], data_xy[i][1]);
                                 rgb = waveLengthToRGB(data_xy[i][0]);
                                 series1.Points[i].Color = Color.FromArgb(rgb[0], rgb[1], rgb[2]);
-                                series1.Points[i].Label = (data_xy[i][0]).ToString();
+                                series1.Points[i].Label = (data_xy[i][0] + "|" + data_xy[i][1]).ToString();
                             }
                             else
                             {
@@ -583,7 +583,7 @@ namespace Spectroscopy_sensor
                                     flag_join = false;
                                 }
                                 series2.Points.AddXY(data_xy[i][0], data_xy[i][1]);
-                                series2.Points[i - 12].Label = (data_xy[i][0]).ToString();
+                                series2.Points[i - 12].Label = (data_xy[i][0] + "|" + data_xy[i][1]).ToString();
                             }
 
                         }
